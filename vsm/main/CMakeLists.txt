@@ -6,7 +6,7 @@ set(TARGET_NAME "${FOLDER_NAME}_${NAME}")
 set(TARGET_ALIAS "${FOLDER_NAME}::${NAME}")
 
 set(COMMON_SOURCES
-    main.cpp
+    main.cpp vsm_fastmacros.h
 )
 
 if(${CMAKE_SYSTEM_NAME} STREQUAL Generic) # For Phone
