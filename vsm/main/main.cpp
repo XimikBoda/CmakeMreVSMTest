@@ -2,6 +2,7 @@
 #include "vmsm.h"
 #include <string.h>
 
+
 VMINT handle_smevt(VMINT message, VMINT param);
 void get_hello_string(VMSTR str, VMINT len);
 

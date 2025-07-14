@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.10)
 
-set(NAME "core")
+set(NAME "main")
 
 set(TARGET_NAME "${FOLDER_NAME}_${NAME}")
 set(TARGET_ALIAS "${FOLDER_NAME}::${NAME}")

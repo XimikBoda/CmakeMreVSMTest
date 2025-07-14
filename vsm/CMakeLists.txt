@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 3.10)
 set(FOLDER_NAME "vsm")
 
 add_subdirectory(resourses)
-add_subdirectory(core)
+add_subdirectory(main)
 
 
 set(TARGET_NAME "vsm")
@@ -12,7 +12,7 @@ set(TARGET_ALIAS "${FOLDER_NAME}::${TARGET_NAME}")
 add_custom_command( # repack triger 
    OUTPUT null.cpp
    COMMAND ${CMAKE_COMMAND} -E touch null.cpp
-   DEPENDS vsm::core vsm::resourses
+   DEPENDS vsm::main vsm::resourses
 )
 
 add_library(${TARGET_NAME} STATIC "null.cpp")
@@ -33,7 +33,7 @@ endif()
 
 add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
    COMMAND "${TinyMRESDK}/bin/PackApp" 
-               -a "$<TARGET_FILE:vsm::core>" 
+               -a "$<TARGET_FILE:vsm::main>" 
                -r "$<TARGET_FILE:vsm::resourses>" 
                -o "$<TARGET_FILE:${TARGET_NAME}>" 
                -tr "${RAM}" 
