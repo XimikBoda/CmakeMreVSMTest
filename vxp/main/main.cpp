@@ -7,6 +7,8 @@
 #include <vmres.h>
 #include <vmsm.h>
 
+#include "lib_exports.h"
+
 VMINT		layer_hdl[1];	// layer handle array. 
 VMUINT8* layer_buf = 0;
 
@@ -127,9 +129,7 @@ static void draw_hello(void) {
 	if (sm_handle <= 0) 
 		sprintf(str, "sm_handle = %d", sm_handle);
 	else {
-		typedef void (*get_hello_string_t)(VMSTR str, VMINT len);
-
-		get_hello_string_t get_hello_string = (get_hello_string_t)vm_sm_get_func_entry(sm_handle, 1);
+		get_hello_string_t get_hello_string = (get_hello_string_t)vm_sm_get_func_entry(sm_handle, id_get_hello_string);
 
 		if (get_hello_string)
 			get_hello_string(str, 100);

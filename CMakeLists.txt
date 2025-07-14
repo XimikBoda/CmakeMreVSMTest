@@ -21,6 +21,9 @@ add_definitions(-DLIBNAME="${LIB_NAME}")
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
+
+include_directories(common/include)
+
 add_subdirectory(common)
 add_subdirectory(vxp)
 add_subdirectory(vsm)

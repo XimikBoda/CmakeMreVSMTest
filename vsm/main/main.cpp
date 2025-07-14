@@ -2,12 +2,12 @@
 #include <vmsm.h>
 #include <string.h>
 
-#define SM_HANDLE handle_smevt
+#define SM_HANDLE handle_smevt //name of callback
 #include "vsm_fastmacros.h" // gives faster macros
 
-VMINT handle_smevt(VMINT message, VMINT param);
+#include "lib_exports.h"
 
-void get_hello_string(VMSTR str, VMINT len);
+VMINT handle_smevt(VMINT message, VMINT param);
 
 void vm_main(void) {
 	vm_reg_sm_callback(handle_smevt);
@@ -19,7 +19,7 @@ VMINT handle_smevt(VMINT message, VMINT param) {
 		break;
 	case VM_SM_MSG_QUERY:
 		switch (param) {
-		case 1:
+		case id_get_hello_string:
 			return (VMINT)get_hello_string;
 		default:
 			return NULL;
@@ -39,3 +39,5 @@ void get_hello_string(VMSTR str, VMINT len) {
 
 	SM_PROCESS_END()
 }
+
+// also see SM_CALLBACK_BEGIN() SM_CALLBACK_END()
