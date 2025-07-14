@@ -10,14 +10,14 @@ set(COMMON_SOURCES
 )
 
 if(${CMAKE_SYSTEM_NAME} STREQUAL Generic) # For Phone
-    add_executable (${TARGET_NAME} ${COMMON_SOURCES} gccmain.c)
+    add_executable (${TARGET_NAME} ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/common/core/gccmain.c")
     add_executable(${TARGET_ALIAS} ALIAS ${TARGET_NAME})
 
-    target_link_libraries(${TARGET_NAME} "-T${PROJECT_SOURCE_DIR}/vxp/core/scat.ld")
+    target_link_libraries(${TARGET_NAME} "-T${PROJECT_SOURCE_DIR}/common/core/scat.ld")
     
     set_target_properties(${TARGET_NAME} PROPERTIES SUFFIX ".axf")
 elseif(WIN32) # For MoDis
-    add_library(${TARGET_NAME} SHARED ${COMMON_SOURCES} "dll.def")
+    add_library(${TARGET_NAME} SHARED ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/common/core/dll.def")
     add_library(${TARGET_ALIAS} ALIAS ${TARGET_NAME})
 else()
     message(FATAL_ERROR "Wrong target system")
