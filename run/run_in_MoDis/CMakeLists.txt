@@ -8,7 +8,7 @@ set(TARGET_ALIAS "${FOLDER_NAME}::${NAME}")
 add_custom_command( # repack triger 
    OUTPUT null.cpp
    COMMAND ${CMAKE_COMMAND} -E touch null.cpp
-   DEPENDS vxp
+   DEPENDS vxp vsm
 )
 
 add_library(${TARGET_NAME} STATIC "null.cpp")
